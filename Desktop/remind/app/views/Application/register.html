@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="@{'/public/ui-lightness/custom.css'}" type="text/css" media="screen">
+    <h1><p>REGISTRO</p></h1>
+    <h2>Regístrate, no olvides más tus tareas</h2>
+</head>
+
+#{form @saveUser()}
+    #{field 'user.nombre'}
+    <p class="${field.errorClass}">
+        <strong>Username:</strong> <input type="text" autocomplete="off" name="${field.name}" size="16" value="${user?.nombre}"> *
+        <span class="error">${field.error}</span>
+    </p>
+    #{/field}
+    #{field 'user.contrasena'}
+    <p class="${field.errorClass}">
+        <strong>Password:</strong> <input type="password" name="${field.name}" size="16" value="${user?.contrasena}"> *
+        <span class="error">${field.error}</span>
+    </p>
+    #{/field}
+    #{field 'verifypassword'}
+    <p class="${field.errorClass}">
+        <strong>Verify password:</strong> <input type="password" name="${field.name}" size="16" value="${verifypassword}"> *
+        <span class="error">${field.error}</span>
+    </p>
+    #{/field}
+<p class="buttons">
+    <input type="submit" value="Register"> <a href="@{index()}">Cancel</a>
+</p>
+#{/form}

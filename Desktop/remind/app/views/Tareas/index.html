@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="@{'/public/ui-lightness/custom.css'}" type="text/css" media="screen">
+    <h1><p>Estas son tus tareas, ${user.nombre}</p></h1>
+</head>
+<body >
+
+#{if tareas}
+<table class="tabla" border="1">
+    <thead>
+    <tr>
+        <th>Descripción</th>
+        <th>Fecha Límite</th>
+        <th>Lista</th>
+        <th>Etiqueta</th>
+        <th>Opciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        #{list tareas, as:'tareas'}
+        <tr id="tarea">
+            <td>${tareas.descripcion}</td>
+            <td>${tareas.fecha}</td>
+            <td>${tareas.lista}</td>
+            <td>${tareas.etiqueta}</td>
+            <td>
+            <p class="buttons">
+                <a href="@{actualizarTarea(tareas.id)}">editar</a>
+
+            </p>
+
+            </td>
+        </tr>
+        #{/list}
+    </tbody>
+</table>
+#{/if}
+
+#{form @nuevaTarea()}
+<p class="buttons">
+    <input type="submit" value="Añadir Tarea">
+</p>
+#{/form}
+
+#{form @logout()}
+<p class="buttons">
+    <input type="submit" value="Cerrar sesión">
+</p>
+#{/form}
+
+
+</body>
+</html>

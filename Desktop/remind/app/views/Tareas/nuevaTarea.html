@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="@{'/public/ui-lightness/custom.css'}" type="text/css" media="screen">
+    <h1><p>Nueva tarea</p></h1>
+</head>
+
+
+#{form @anadirTarea()}
+
+    #{field 'descripcion'}
+    <p class="${field.errorClass}">
+        <strong>Descripción:</strong> <input type="text" name="${field.name}" size="16" value="${descripcion}">
+        <span class="error">${field.error}</span>
+    </p>
+    #{/field}
+    #{field 'fecha'}
+    <p class="${field.errorClass}">
+        <strong>Fecha:</strong> <input type="date" name="${field.name}" size="16" value="${fecha}">
+        <span class="error">${field.error}</span>
+    </p>
+    #{/field}
+<p>
+    <strong>Lista:</strong>
+    #{select 'lista'}
+        #{option 1}Pendiente#{/option}
+        #{option 2}En curso#{/option}
+        #{option 3}Realizada#{/option}
+    #{/select}
+</p>
+<p>
+    <strong>Etiqueta:</strong>
+    #{select 'etiqueta'}
+        #{option 1}Urgente#{/option}
+        #{option 2}No urgente#{/option}
+        #{option 3}Dificil#{/option}
+        #{option 4}Facil#{/option}
+    #{/select}
+</p>
+<p class="buttons">
+    <input type="submit" value="Aceptar"> <a href="@{index()}">Cancel</a>
+</p>
+#{/form}

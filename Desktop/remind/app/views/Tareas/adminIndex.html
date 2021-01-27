@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="@{'/public/ui-lightness/custom.css'}" type="text/css" media="screen">
+    <h1 ><p >Estos son los usuarios registrados, ${user.nombre}</p></h1>
+</head>
+<body>
+#{if users}
+<table class="tabla" border="1">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Contraseña</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        #{list users, as:'users'}
+        <tr id="user">
+            <td>${users.nombre}</td>
+            <td>${users.contrasena}</td>
+            <td>
+                <p class="buttons">
+                    <a href="@{borrarUser(users.id)}">borrar</a>
+                </p>
+            </td>
+        </tr>
+        #{/list}
+    </tbody>
+</table>
+#{/if}
+#{form @returnTareas()}
+
+#{field 'nombre'}
+<p class="${field.errorClass}">
+    <strong>Mostrar tareas de:</strong> <input type="text" name="${field.name}" size="16" value="${nombre}"> *
+    <span class="error">${field.error}</span>
+</p>
+#{/field}
+<p class="buttons">
+    <input type="submit" value="Aceptar">
+</p>
+#{/form}
+#{if tareas}
+<table class="tabla" border="1">
+    <thead>
+    <tr>
+        <th>Descripción</th>
+        <th>Fecha Límite</th>
+        <th>Lista</th>
+        <th>Etiqueta</th>
+        <th>Opciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        #{list tareas, as:'tareas'}
+        <tr id="tarea">
+            <td>${tareas.descripcion}</td>
+            <td>${tareas.fecha}</td>
+            <td>${tareas.lista}</td>
+            <td>${tareas.etiqueta}</td>
+            <td>
+                <p class="buttons">
+                    <a href="@{actualizarTarea(tareas.id)}">editar</a>
+
+                </p>
+
+            </td>
+        </tr>
+        #{/list}
+    </tbody>
+</table>
+#{/if}
+#{form @returnContador()}
+    #{field 'nombre'}
+    <p class="${field.errorClass}">
+        <strong>Mostrar cantidad de tareas por lista de:</strong> <input type="text" name="${field.name}" size="16" value="${nombre}"> *
+        <span class="error">${field.error}</span>
+    </p>
+    #{/field}
+<p class="buttons">
+    <input type="submit" value="Mostrar">
+</p>
+#{/form}
+#{if pendientes}
+<p>
+    Pendientes:${pendientes}
+</p>
+#{/if}
+#{if encurso}
+<p>
+    En curso:${encurso}
+</p>
+#{/if}
+#{if realizadas}
+<p>
+    Realizadas:${realizadas}
+</p>
+#{/if}
+#{form @maxTareas()}
+<p>
+<strong>Quienes son los usuarios con mas tareas pendientes?</strong>
+</p>
+<p class="buttons">
+    <input type="submit" value="Mostrar">
+<p>
+#{/form}
+#{if usuarios}
+<p>
+    El/Los usuarios con mas tareas pendientes es/son: ${usuarios}, que tiene/n ${max} tarea/s pendientes.
+</p>
+#{/if}
+
+
+#{form @logout()}
+<p class="buttons">
+    <input type="submit" value="Cerrar sesión">
+</p>
+#{/form}
+</body>
+</html>

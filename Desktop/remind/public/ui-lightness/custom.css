@@ -1,0 +1,16 @@
+
+body{
+    background-color: black;
+    font-family: 'Lora', 'Times New Roman', serif;
+    color:deepskyblue;
+    text-align: center;
+}
+body table{
+    color:greenyellow;
+    align-content:center;
+    text-align: center;
+}
+.tabla{
+    margin-left: auto;
+    margin-right: auto;
+}

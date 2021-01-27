@@ -1,0 +1,36 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div id="login">
+
+
+
+#{form @logIn()}
+#{field 'nombre'}
+    <p class="${field.errorClass}">
+        <label>Usuario:</label>
+        <input type="text" name="${field.name}" size="19" value="${user?.nombre}" />
+        <span class="error">${field.error}</span>
+    </p>
+#{/field}
+#{field 'contra'}
+    <p class="${field.errorClass}">
+        <label>Contraseña:</label>
+        <input type="password" name="${field.name}" size="19"value="${user?.contrasena}"/>
+        <span class="error">${field.error}</span>
+    </p>
+#{/field}
+    <p class="buttons">
+        <input type="submit" value="Iniciar sesión" />
+    </p>
+#{/form}
+
+    <p>
+        <a href="@{register()}">Register New User</a>
+    </p>
+
+</div>
+
+<script type="text/javascript" charset="${_response_encoding}">
+    sessvars.$.clearMem()
+</script>

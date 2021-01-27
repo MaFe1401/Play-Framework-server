@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="@{'/public/ui-lightness/custom.css'}" type="text/css" media="screen">
+    <h1><p>Editar tarea</p></h1>
+</head>
+
+#{form @editarTarea(t.id)}
+<body>
+<table class="tabla">
+    <thead>
+    <tr>
+        <th>Descripción</th>
+        <th>Fecha Límite</th>
+        <th>Lista</th>
+        <th>Etiqueta</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    #{field 'descripcion'}
+        <td><p>
+            <input type="text" size="19" name="${field.name}"  value="${t.descripcion}"  contenteditable="true" />
+        </p></td>
+        #{/field}
+    #{field 'fecha'}
+        <td><p>
+            <input type="date" size="19" name="${field.name}"  value="${t.fecha}" contenteditable="true" />
+        </p></td>
+    #{/field}
+    <td> <p>
+        <strong>Lista:</strong>
+        #{select 'lista', value:t.lista}
+            #{option 1}Pendiente#{/option}
+            #{option 2}En curso#{/option}
+            #{option 3}Realizada#{/option}
+        #{/select}
+    </p></td>
+    <td> <p>
+        <strong>Etiqueta:</strong>
+        #{select 'etiqueta', value:t.etiqueta}
+            #{option 1}Urgente#{/option}
+            #{option 2}No urgente#{/option}
+            #{option 3}Dificil#{/option}
+            #{option 4}Facil#{/option}
+        #{/select}
+    </p></td>
+            <p class="buttons">
+                <input type="submit" value="Aceptar">
+            </p>
+    <p class="buttons">
+        <a href="@{deleteTarea(t.id, nombre)}" style="color:#FF0000;">eliminar tarea</a>
+    </p>
+        #{/form}
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

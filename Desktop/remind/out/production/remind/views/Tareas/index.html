@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <h1><p style="color:black;">Estas son tus tareas, ${user.nombre}</p></h1>
+</head>
+<body>
+
+#{if tareas}
+<table>
+    <thead>
+    <tr>
+        <th>Descripción</th>
+        <th>Fecha Límite</th>
+        <th>Lista</th>
+        <th>Etiqueta</th>
+        <th>Opciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+        #{list tareas, as:'tareas'}
+        <tr>
+            <td>${tareas.descripcion}</td>
+            <td>${tareas.fecha}</td>
+            <td>${tareas.lista}</td>
+            <td>${tareas.etiqueta}</td>
+            <td>
+            <p class="buttons">
+                <a href="@{editarTarea()}">editar</a>
+            </p>
+            </td>
+        #{form @}
+            <p class="buttons">
+                <input type="submit" value="Añadir Tarea">
+            </p>
+        </tr>
+        #{/list}
+    </tbody>
+</table>
+
+#{/if}
+
+#{else}
+<p>
+    No hay tareas
+</p>
+#{/else}
+
+</body>
+</html>

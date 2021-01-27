@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Descripción</th>
+        <th>Fecha Límite</th>
+        <th>Lista</th>
+        <th>Etiqueta</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>${tarea.descripcion}</td>
+        <td>${tarea.fecha}</td>
+        <td>${tarea.lista}</td>
+        <td>${tarea.etiqueta}</td>
+        #{form @editarTarea()}
+            <p class="buttons">
+                <input type="submit" value="Aceptar">
+            </p>
+        #{/form}
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="@{'/public/ui-lightness/custom.css'}" type="text/css" media="screen">
+    <h1><p>REMIND</p></h1>
+    <h2><p>Recuerda tus tareas</p></h2>
+</head>
+
+<body>
+#{form @logIn()}
+#{field 'nombre'}
+    <p class="${field.errorClass}">
+        <label>Usuario:</label>
+        <input type="text" name="${field.name}" size="19" value="${user?.nombre}"  />
+        <span class="error">${field.error}</span>
+    </p>
+#{/field}
+#{field 'contra'}
+    <p class="${field.errorClass}">
+        <label>Contraseña:</label>
+        <input type="password" name="${field.name}" size="19"value="${user?.contrasena}"/>
+        <span class="error">${field.error}</span>
+    </p>
+#{/field}
+    <p class="buttons">
+        <input type="submit" value="Iniciar sesión" />
+    </p>
+#{/form}
+
+    <p>
+        <a href="@{register()}">Registrarse</a>
+    </p>
+
+</div>
+
+<script type="text/javascript" charset="${_response_encoding}">
+    sessvars.$.clearMem()
+</script>
+</body>
+</html>
